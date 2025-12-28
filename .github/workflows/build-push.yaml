@@ -22,11 +22,11 @@ jobs:
     - name: Set Azure Subscription
       run: az account set --subscription 3f04442e-237f-4b01-91f3-f567b7fc39b3
 
+    - name: Validate ACR exists
+      run: az acr show --name ${{ secrets.ACR_NAME }} -o table
+
     - name: Login to ACR
       run: az acr login --name ${{ secrets.ACR_NAME }}
-
-    - name: List ACRs (debug)
-      run: az acr list --query "[].{Name:name, RG:resourceGroup}" -o table
 
     - name: Build and Push Image
       run: |
