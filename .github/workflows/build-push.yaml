@@ -23,3 +23,11 @@ jobs:
     - name: Get Azure Container Registry Name
       run: echo ${{ env.ACR_NAME }}
 
+    - run: |
+        az acr login --name ${{ env.ACR_NAME }}
+
+    - run: |
+        TAG=1.0.${{ github.run_number }}
+        ACR=$(az acr show --name ${{ env.ACR_NAME }} --query loginServer -o tsv)
+        docker build -t $ACR/${{ env.IMAGE_NAME }}:$TAG .
+        docker push $ACR/${{ env.IMAGE_NAME }}:$TAG
