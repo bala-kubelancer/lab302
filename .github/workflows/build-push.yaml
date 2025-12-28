@@ -6,6 +6,7 @@ on:
 
 env:
   IMAGE_NAME: lab302
+  ACR_NAME: lab302acr
 
 jobs:
   build:
@@ -20,16 +21,5 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Get Azure Container Registry Name
-      run: echo ${{ secrets.ACR_NAME }}
+      run: echo ${{ env.ACR_NAME }}
 
-    - name: Validate ACR exists
-      run: az acr show --name lab302acr -o table
-
-    - name: Login to ACR
-      run: az acr login --name lab302acr
-
-    - name: Build and Push Image
-      run: |
-        TAG=1.0.${{ github.run_number }}
-        docker build -t lab302acr.azurecr.io/${{ env.IMAGE_NAME }}:$TAG .
-        docker push lab302acr.azurecr.io/${{ env.IMAGE_NAME }}:$TAG
