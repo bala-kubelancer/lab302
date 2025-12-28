@@ -25,12 +25,12 @@ jobs:
         az account show
         az acr list -o table
 
-    - name: Get ACR Login Server
+    - name: Get ACR LoginServer
       id: acr-login-server
       run: |
         ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer --output tsv)
         echo "ACR_LOGIN_SERVER=$ACR_LOGIN_SERVER" >> $GITHUB_ENV
         echo "ACR_LOGIN_SERVER=$ACR_LOGIN_SERVER"
 
-        
+
 
