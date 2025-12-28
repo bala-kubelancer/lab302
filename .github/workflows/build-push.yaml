@@ -20,5 +20,8 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Validate ACR Access
-      run: az acr show --name ${{ env.ACR_NAME }} -o table
+    - name: Debug ACR visibility
+      run: |
+        az account show
+        az acr list -o table
+
