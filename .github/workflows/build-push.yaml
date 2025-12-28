@@ -19,8 +19,8 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Set Azure Subscription
-      run: az account set --subscription 3f04442e-237f-4b01-91f3-f567b7fc39b3
+    - name: Get Azure Container Registry Name
+      run: echo ${{ secrets.ACR_NAME }}
 
     - name: Validate ACR exists
       run: az acr show --name ${{ secrets.ACR_NAME }} -o table
