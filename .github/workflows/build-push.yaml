@@ -21,6 +21,10 @@ jobs:
         az acr login --name ${{ secrets.ACR_NAME }}
 
     - run: |
+        echo "Azure Container Registry List with Resource Groups"
+        az acr list --query "[].{Name:name, RG:resourceGroup}" -o table
+        
+    - run: |
         echo "Azure Container Registry List"
         az acr list --output table
 
