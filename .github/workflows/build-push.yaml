@@ -21,6 +21,11 @@ jobs:
         az acr login --name ${{ secrets.ACR_NAME }}
 
     - run: |
+        echo "Azure Container Registry List"
+        az acr list --output table
+
+
+    - run: |
         TAG=1.0.${{ github.run_number }}
         ACR=$(az acr show --name lab302acr --query loginServer -o tsv)
         docker build -t $ACR/${{ env.IMAGE_NAME }}:$TAG .
