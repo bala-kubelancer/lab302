@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: lab302app
-          image: lab302acr.azurecr.io/lab302:1.0.0
+          image: lab302acr.azurecr.io/lab302:1.0.24
           ports:
             - containerPort: 8080
 

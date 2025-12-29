@@ -4,7 +4,8 @@ metadata:
   name: argocd-ingress
   namespace: argocd
   annotations:
-    appgw.ingress.kubernetes.io/backend-protocol: "Https"
+    appgw.ingress.kubernetes.io/backend-protocol: "HTTP"
+    appgw.ingress.kubernetes.io/enable-grpc: "false"
 spec:
   ingressClassName: azure-application-gateway
   rules:
@@ -17,4 +18,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 443
+              number: 80
