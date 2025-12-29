@@ -22,8 +22,8 @@ jobs:
     - name: Azure Login (OIDC)
       uses: azure/login@v2
       with:
-        client-id: 1c00fe9d-0a97-436e-9590-4b9d9b25f321   # APP_ID
-        tenant-id: ad3833bf-7795-489c-ad0f-7e74c84175cd  # TENANT_ID
+        client-id: 1c00fe9d-0a97-436e-9590-4b9d9b25f321       # APP_ID
+        tenant-id: ad3833bf-7795-489c-ad0f-7e74c84175cd       # TENANT_ID
         subscription-id: 3f04442e-237f-4b01-91f3-f567b7fc39b3 # SUBSCRIPTION_ID
 
     - name: Validate ACR
