@@ -26,7 +26,7 @@ jobs:
         tenant-id: ad3833bf-7795-489c-ad0f-7e74c84175cd
         subscription-id: 3f04442e-237f-4b01-91f3-f567b7fc39b3
 
-    - name: Debug identity (temporary)
+    - name: Debug identity 
       run: |
         az account show
         az acr list -o table
