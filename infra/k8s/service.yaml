@@ -1,39 +1,12 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    istio.io/dataplane-mode: ambient
-  name: kubeapp
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: kubeapp
-  namespace: kubeapp
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: kubeapp
-  template:
-    metadata:
-      labels:
-        app: kubeapp
-    spec:
-      containers:
-        - name: kubeapp
-          image: kubelancer/hello-kubelancer:v1
-          ports:
-            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: kubeapp-service
-  namespace: kubeapp
+  name: lab302app-service
+  namespace: lab302
 spec:
   selector:
-    app: kubeapp
+    app: lab302app
   ports:
     - protocol: TCP
       port: 80

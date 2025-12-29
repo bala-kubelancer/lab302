@@ -15,20 +15,7 @@ spec:
     spec:
       containers:
         - name: lab302app
-          image: kubelancer/hello-kubelancer:v1
+          image: lab302acr.azurecr.io/lab302:1.0.0
           ports:
             - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: lab302app-service
-  namespace: lab302app
-spec:
-  selector:
-    app: lab302app
-  ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 80
-  type: ClusterIP
+
