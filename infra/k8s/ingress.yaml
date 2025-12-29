@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lab302app-ingress
+  namespace: lab302
+  annotations:
+    appgw.ingress.kubernetes.io/backend-protocol: "HTTP"
+spec:
+  ingressClassName: azure-application-gateway
+  rules:
+  - host: kubeapp.dev.kubelancer.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: lab302app-service
+            port:
+              number: 80
